@@ -4,6 +4,10 @@ A Model Context Protocol server
 
 This is a TypeScript-based MCP server that implements a sending email system.
 
+<a href="https://glama.ai/mcp/servers/oo6xexjpe0">
+  <img width="380" height="200" src="https://glama.ai/mcp/servers/oo6xexjpe0/badge" alt="blastengine-mailer MCP server" />
+</a>
+
 ## Features
 
 ### Tools
