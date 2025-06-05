@@ -1,37 +1,51 @@
 # blastengine-mailer MCP Server
 
-A Model Context Protocol server
+Blastengine APIを使用してメールを送信するModel Context Protocol (MCP) サーバー
 
-This is a TypeScript-based MCP server that implements a sending email system.
+このJavaScriptベースのMCPサーバーは、LLM（大規模言語モデル）がBlastengine APIを通じてメールを送信できるようにします。
 
-## Features
+## 機能
 
-### Tools
-- `send_email` - send a email
+### ツール
+- `send_email` - Blastengine APIを使用してメールを送信
+  - 必須パラメータ:
+    - `to`: 送信先メールアドレス
+    - `from`: 送信元メールアドレス
+    - `subject`: メールの件名
+    - `text`: メール本文
+  - 送信成功時はdelivery_idを返します
+  - エラー時は詳細なエラーメッセージを返します
 
-## Development
+## 前提条件
 
-Install dependencies:
+- Node.js (ESモジュール対応)
+- Blastengine APIアカウントとAPIキー
+
+## 開発
+
+依存関係のインストール:
 ```bash
 npm install
 ```
 
-Build the server:
+サーバーのビルド:
 ```bash
 npm run build
 ```
 
-For development with auto-rebuild:
+開発時の自動リビルド:
 ```bash
 npm run watch
 ```
 
-## Installation
+## インストールと設定
 
-To use with Claude Desktop, add the server config:
+### Claude Desktopでの使用
 
-On MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
+Claude Desktopで使用するには、以下の設定ファイルにサーバー設定を追加します:
+
+macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 
 ```json
 {
@@ -50,12 +64,24 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
 }
 ```
 
-### Debugging
+### デバッグ
 
-Since MCP servers communicate over stdio, debugging can be challenging. We recommend using the [MCP Inspector](https://github.com/modelcontextprotocol/inspector), which is available as a package script:
+MCPサーバーはstdio経由で通信するため、デバッグが困難な場合があります。[MCP Inspector](https://github.com/modelcontextprotocol/inspector)の使用を推奨します:
 
 ```bash
 npm run inspector
 ```
 
-The Inspector will provide a URL to access debugging tools in your browser.
+インスペクターは、ブラウザでデバッグツールにアクセスするためのURLを提供します。
+
+## 使用例
+
+Claude Desktopで設定後、以下のようにメールを送信できます:
+
+```
+「test@example.comに『テストメール』という件名でメールを送信して」
+```
+
+## ライセンス
+
+このプロジェクトはプライベートプロジェクトです。
